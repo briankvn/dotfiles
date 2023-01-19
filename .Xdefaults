@@ -1,0 +1,15 @@
+! $OpenBSD: c64.Xdefaults 18/01/2023 C64 Exp $
+XTerm*loginShell:true
+!Xterm*vt100.faceName:Fira Mono
+
+!Xcursor.theme: default
+!Xcursor.size: 96
+
+
+*font:xft:Fira Mono:Monospace:pixelsize=20
+*scrollBar: false
+Xft*antialias: true
+Xft*hinting: true
+Xft*hintstyle: hintfull
+XTerm*reverseVideo:on
+XTerm*locale: UTF-8
