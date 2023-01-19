@@ -1,0 +1,161 @@
+# C64's Sdorfehs configuration
+escape Super_L
+
+exec picom  --vsync -b
+
+set barborder         2
+set barbordercolor    #000000
+#set barinpadding      2 2
+#set barpadding        2 2
+set barsticky         0
+set bgcolor           black
+set bwcolor           #161616
+set border            2
+set fgcolor           #bbbbbb
+set font              "Fira Mono:pixelsize=22:antialias=1:hinting=1:hintstyle=3"
+#set font              "IBM-Plex:style=Regular:pixelsize=15:antialias=1:hinting=1:hintstyle=3"
+#set framefmt          frame %f (%Wx%H)
+#set framemsgwait      3
+#set framemsgwait      -1
+set fwcolor           #225522
+set gap               4
+set historysize       20
+set ignoreresizehints 1
+set maxsizegravity    c
+set maxundos          20
+set msgwait           3
+set onlyborder        0
+set padding           8 8 8 8
+#set padding           1 1 1 0
+set resizefmt         resize (%Wx%H)
+set resizeunit        5
+set rudeness          15
+set startupmessage    0
+set stickyfmt         %t
+set topkmap           top
+set transgravity      c
+set vscreens          10
+set warp              0
+set winfmt            %n%s%t
+set wingravity        nw
+set winliststyle      column
+set winname           title
+
+bind s   split
+bind C-s split
+bind S   hsplit
+bind C-S hsplit
+
+bind c   exec sakura
+bind C   exec alacritty
+bind x   exec xterm -rv
+
+unbind k
+unbind n
+
+bind a exec sdorfehs -c "echo `date`"
+bind grave exec sdorfehs -c "echo  Battery is `apm -l`% "
+bind sterling exec sdorfehs -c "echo  Bitcoin Price = $(curl -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3) GBP "
+bind n exec mpc prev
+bind p exec mpc next
+bind o exec mpc toggle
+
+bind Home exec firefox
+bind d exec dmenu_run -i -fn 'Fira Mono' -nb black -nf lightgrey -sb darkgray -sf '#000000'
+bind equal exec feh --bg-fill -z -r /home/c64/images/.walls/dark/
+bind g exec sakura -e mc
+bind G exec sakura -e xfe
+
+bind comma exec scrot -n "-f '/usr/local/share/fonts/fira/FiraMono-Bold.ttf/44' -x 1800 -y 8 -c 60,160,60,220 -t 'C64'" '%d%m%Y_$wx$h.png'
+
+
+# scratch buffer for temp things
+bind Return exec xterm -rv -e vim -c 'call Scratch()'
+bind C-Return exec xterm -rv -e vim -c 'call Scratch()'
+bind F11 exec sdorfehs -c restart
+bind F12 exec sdorfehs -c quit
+
+# swap workspaces, but define it in top
+# "win-n"
+definekey top s-1 vselect 1
+definekey top s-2 vselect 2
+definekey top s-3 vselect 3
+definekey top s-4 vselect 4
+definekey top s-5 vselect 5
+definekey top s-6 vselect 6
+definekey top s-7 vselect 7
+definekey top s-8 vselect 8
+definekey top s-9 vselect 9
+definekey top s-0 vselect 0
+
+
+definekey top s-Return exec mpd-show-coverart
+definekey top C-Return exec urxvt -fg white -bg black -sbg +sb -e $HOME/dev/utils/mpdfzf -p
+# move window to another monitor
+#definekey top M-Return smove
+
+#< binds: window management
+bind H prevscreen
+bind J exchangedown
+bind K exchangeup
+bind L nextscreen
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+
+bind C-R exec reboot_butik
+
+bind C-K kill
+
+bind G vmove
+
+# dbeaver doesn't behave and ignores the primary buffer
+bind Escape exec clipboard-to-primary
+
+# bind Tab exec sdorfehs -c "set barbordercolor black" -c "set bgcolor #d3ceb9" -c "set barborder 6" -c "set barpadding 24 14" -c "set border 6" -c "set fgcolor #444444" -c "set padding 40 40 40 40" -c "set onlyborder 1"
+bind ISO_Left_Tab restart
+
+# select vscreens with fzf
+unbind v
+bind v exec fzfvselect
+bind V vscreens
+
+# select windows with fzf
+unbind w
+bind w exec fzfselect
+
+# web development view, split firefox and a terminal
+bind W exec sdorfehs -c "hsplit" -c "resize 200 0"
+
+vselect 2
+vrename db
+vselect 3
+vrename ftp
+vselect 4
+vrename www
+vselect 5
+vrename irc
+vselect 6
+vrename slask1
+vselect 7
+vrename slask2
+vselect 8
+vrename mail
+
+vselect 0
+vrename teams
+
+vselect 9
+vrename music
+
+#exec pavucontrol
+hsplit
+focusright
+#exec pulseeffects
+iprev
+
+vselect 1
+vrename code
+
