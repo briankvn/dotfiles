@@ -1,4 +1,5 @@
 # dotfiles
+Dotfiles for Thinkpad Carbon 10th Gen running OpenBSD 7.2
 
           _____       c64@x1
         \-     -/     os     OpenBSD 7.2
@@ -8,7 +9,6 @@
      / \         /    memory 403M / 16067M
         /-_____-\
 
-Dotfiles for Thinkpad Carbon 10th Gen running OpenBSD 7.2
 
 Currently installed packages via pkg_add:
 
