@@ -10,7 +10,7 @@ Dotfiles for Thinkpad Carbon 10th Gen running OpenBSD 7.2
         /-_____-\
 
 
-##Currently installed packages via pkg_add:
+## Currently installed packages via pkg_add:
 
 	curl--
 	dmenu--
@@ -41,7 +41,7 @@ Dotfiles for Thinkpad Carbon 10th Gen running OpenBSD 7.2
 	xdotool--
 	xfe--
 
-##Compiled from source:
+## Compiled from source:
 
 	sdorfehs
 	fbgrab
